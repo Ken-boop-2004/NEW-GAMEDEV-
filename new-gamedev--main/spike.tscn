@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://0sii35h3q2hf"]
+
+[ext_resource type="Script" uid="uid://d1jold8yugqvf" path="res://spike.gd" id="1_7k7bx"]
+[ext_resource type="Texture2D" uid="uid://kpgcsirwy3ra" path="res://858f4f64-090f-49c1-999d-9210a01be9dd.png" id="1_8ryga"]
+
+[node name="spike" type="Area2D"]
+editor_description = "HAZARD
+"
+script = ExtResource("1_7k7bx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.57406354, -12)
+scale = Vector2(0.2811582, 0.36125)
+texture = ExtResource("1_8ryga")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-49.000004, 40)
+scale = Vector2(15.686523, 60.219944)
+polygon = PackedVector2Array(2.130106, -0.3356377, 3.130106, -1.335638, 4.130106, -0.3356377)

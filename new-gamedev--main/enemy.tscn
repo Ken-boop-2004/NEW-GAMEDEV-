@@ -1,0 +1,122 @@
+[gd_scene load_steps=14 format=3 uid="uid://cxvcnp4vomduv"]
+
+[ext_resource type="Script" uid="uid://bjvdke1qw2rsm" path="res://enemy.gd" id="1_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://bov4tbyarvjsk" path="res://character-spritesheet.png" id="2_qi2p4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gyqm"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(384, 4386, 124, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qi2p4"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(512, 4386, 124, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iifgy"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(640, 4386, 124, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wujgv"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(0, 4125, 128, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epg4t"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(128, 3870, 124, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yqyl"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(256, 3870, 124, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hb8ge"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(384, 3870, 124, 67)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n0g06"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gyqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qi2p4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iifgy")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wujgv")
+}],
+"loop": true,
+"name": &"static",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epg4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yqyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hb8ge")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ar8e5"]
+radius = 35.0
+height = 126.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_doop2"]
+radius = 930.1742
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hcft"]
+size = Vector2(77, 98.5)
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_4gyqm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.9073486e-06, 1)
+scale = Vector2(2.3164063, 2.3500001)
+sprite_frames = SubResource("SpriteFrames_n0g06")
+animation = &"static"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 8)
+shape = SubResource("CapsuleShape2D_ar8e5")
+
+[node name="DetectionArea" type="Area2D" parent="." groups=["enemies"]]
+priority = -1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(5, 1)
+shape = SubResource("CircleShape2D_doop2")
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(-84, 18)
+shape = SubResource("RectangleShape2D_5hcft")
+
+[node name="RayLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-60, 0)
+
+[node name="RayRight" type="RayCast2D" parent="."]
+enabled = false
+target_position = Vector2(60, 0)
+collide_with_areas = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+modulate = Color(0, 0.44705883, 0, 1)
+offset_left = -39.0
+offset_top = -77.0
+offset_right = 40.0
+offset_bottom = -50.0

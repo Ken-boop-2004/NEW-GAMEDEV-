@@ -1,0 +1,93 @@
+[gd_scene load_steps=4 format=3 uid="uid://f2r5k2qc13iy"]
+
+[ext_resource type="Script" uid="uid://dpdigdub7b5rg" path="res://settings.gd" id="1_x2hje"]
+[ext_resource type="VideoStream" uid="uid://byr2g86nvv81r" path="res://Untitled-design.ogv" id="2_nkug2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nkug2"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x2hje")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -159.0
+offset_right = 1146.0
+offset_bottom = 702.0
+stream = ExtResource("2_nkug2")
+autoplay = true
+loop = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 132.0
+offset_right = 676.0
+offset_bottom = 501.0
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "SETTINGS"
+label_settings = SubResource("LabelSettings_nkug2")
+horizontal_alignment = 1
+
+[node name="volume label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "VOLUME"
+
+[node name="VolumeSlider" type="HSlider" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="brightness label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "BRIGHTNESS"
+
+[node name="BrightnessSlider" type="HSlider" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="FullscreenToggle" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "FULLSCREEN"
+
+[node name="KeybindJump" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+text = "JUMP: W"
+
+[node name="KeybindAttack" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+text = "ATTACK: LMB"
+
+[node name="KeybindDash" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+text = "DASH: SPACE"
+
+[node name="BtnBack" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "BACK"
+
+[node name="BrightnessOverlay" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 685.0
+offset_top = 252.0
+offset_right = 725.0
+offset_bottom = 292.0
+mouse_filter = 2

@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwv25gmiscfj2"]
+
+[ext_resource type="Script" uid="uid://byxd1glm4ltvl" path="res://pause_menu.gd" id="1_hdmo1"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_hdmo1")
+
+[node name="PausePanel" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="ColorRect" parent="PausePanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.02745098)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PausePanel"]
+layout_mode = 0
+offset_left = 489.0
+offset_top = 232.0
+offset_right = 689.0
+offset_bottom = 364.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="PausePanel/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="BtnContinue" type="Button" parent="PausePanel/VBoxContainer"]
+layout_mode = 2
+text = "CONTINUE"
+
+[node name="BtnExit" type="Button" parent="PausePanel/VBoxContainer"]
+layout_mode = 2
+text = "EXIT TO MENU"
